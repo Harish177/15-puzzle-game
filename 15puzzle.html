@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>15 Puzzle</title>
+        <style>
+            *{
+                text-align: center;
+                background-color: #E8A0BF;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            table{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .box{
+                margin:20px;
+            }
+            td{
+                background-color: #8671b2;
+                color:#FCC5C0;
+                font-size: 36pt;
+            }
+            td:hover{
+                background-color: #FCC5C0;
+                color:#8671b2;
+            }
+            #start{
+                background-color: #8671b2;
+                font-size: 30pt;
+                color:#FCC5C0;
+                padding: 15px;
+                border-radius: 8px;
+                border: hidden;
+
+            }
+            #start:hover{
+                background-color: #6c5898;
+            }
+            #display{
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <h1 style="color:#846eb3; font-size: 42pt;">15 Puzzle Game</h1>
+            <button id="start"onclick="show()">Start Game</button>
+        <table id="display" border="1px" cellpadding="30px">
+            <tr>
+                <td id="1" onClick="getId(this.id)">8</td>
+                <td id="2" onClick="getId(this.id)">13</td>
+                <td id="3" onClick="getId(this.id)">7</td>
+                <td id="4" onClick="getId(this.id)">4</td>
+            </tr>
+            <tr>
+                <td id="5" onClick="getId(this.id)">6</td>
+                <td id="6" onClick="getId(this.id)">10</td>
+                <td id="7" onClick="getId(this.id)">1</td>
+                <td id="8" onClick="getId(this.id)">3</td>
+            </tr>
+            <tr>
+                <td id="9" onClick="getId(this.id)">11</td>
+                <td id="10" onClick="getId(this.id)">12</td>
+                <td id="11" onClick="getId(this.id)">2</td>
+                <td id="12" onClick="getId(this.id)">14</td>
+            </tr>
+            <tr>
+                <td id="13" onClick="getId(this.id)">5</td>
+                <td id="14" onClick="getId(this.id)">9</td>
+                <td id="15" onClick="getId(this.id)">15</td>
+                <td id="16" onClick="getId(this.id)"> </td>
+            </tr>
+        </table>
+    </div>
+    </body>
+    <script>
+        function show(){
+            document.getElementById("display").style.visibility="visible";
+            document.getElementById("start").style.display="none";
+        }
+        function getId(getval){
+            var id = parseInt(getval)
+            if(id+1>=1 && id+1<=16 && document.getElementById(id+1).innerHTML==' '){
+                var swap1 = document.getElementById(id+1)
+                var swap2 = document.getElementById(id)
+                swap(swap1,swap2);
+            }
+            if(id-1>=1 && id-1<=16 && document.getElementById(id-1).innerHTML==' '){
+                var swap1 = document.getElementById(id-1)
+                var swap2 = document.getElementById(id)
+                swap(swap1,swap2);
+            }
+            if(id+4>=1 && id+4<=16 && document.getElementById(id+4).innerHTML==' '){
+                var swap1 = document.getElementById(id+4)
+                var swap2 = document.getElementById(id)
+                swap(swap1,swap2);
+            }
+            if(id-4>=1 && id-4<=16 && document.getElementById(id-4).innerHTML==' '){
+                var swap1 = document.getElementById(id-4)
+                var swap2 = document.getElementById(id)
+                swap(swap1,swap2);
+            }
+        }
+        function swap(swap1,swap2){
+            var temp = swap1.innerHTML;
+            swap1.innerHTML = swap2.innerHTML;
+            swap2.innerHTML = temp;
+
+        }
+    </script>
+</html>
